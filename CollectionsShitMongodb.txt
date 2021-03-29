@@ -1,0 +1,68 @@
+HTML, Bootstrap
+PHP classbaseddddddddddddddddd
+
+MongoDB
+
+//1
+user collection{ //company manager/employeeeeeeeeeee
+user_id //default set
+name: String
+DOB: date
+sex: String
+phone number: String
+aadhar no: String
+company_id: String
+}
+
+//2
+company collection{
+comp_id //default set
+comp_name: String
+mgr_id: String
+address: String
+phone: String
+owner: String
+current_projects_running: String array or string[] // contains id for tenders running from 5
+}
+
+//3 filled by company to get contract
+tender_form collection {
+tender_id //default set
+comp_id //reference from 2
+category: String //goods, toilet, food, cloth
+contract_Title: String
+reference: String
+estimated_time: int ( days)
+agreement_value: float
+date_invited: date
+date_due: date
+accepted_conditions : bool
+open_close: bool
+}
+
+//4 set by company to receive forms
+company_set_tender collection {
+tender_id //default set
+comp_id //reference from 2
+category: String //goods, toilet, food, cloth
+contract_Title: String
+reference: String
+estimated_time: int ( days)
+agreement_value: float
+date_invited: date
+date_due: date
+accepted_conditions : bool
+open_close: bool
+}
+
+//5 
+tender_alloted collection {
+comp_id: String
+tender_id: String
+open_close: bool
+}
+
+
+feedback collection {
+
+}

@@ -1,0 +1,15 @@
+Major modules
+
+Module- 1: Displaying tenders and its information related to it category wise
+Module- 2: Posting notice for tenders
+Module- 3: Submission of forms by company, vendors to apply for tenders
+Module- 4: Evaluating and sorting relevant application received and declaring the results
+Module- 5: Application status checking module
+Module- 6: Setting up user profiles
+Module- 7: Sign in
+Module- 8: Login
+
+Planned workload on team members-
+Revanth - module 3, module - 6, module - 8 
+Vinu Kevin Diesel - module 2, module - 4, module - 7
+Krunal - module 1, module - 5, module - 7
