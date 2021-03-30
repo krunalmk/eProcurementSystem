@@ -6,6 +6,8 @@ MongoDB
 //1
 user collection{ //company mgr_id/employeeeeeeeeeee
 user_id //default set
+password String
+email String
 name: String
 DOB: date
 sex: String
@@ -18,6 +20,7 @@ company_id: String
 company collection{
 comp_id //default set
 comp_name: String
+email String
 mgr_id: String
 address: String
 phone: String
