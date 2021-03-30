@@ -3,6 +3,8 @@ use tender
 db.user.insert({
 mgr_id: 0,
 user_id: 0,
+email: "abc@abc.com",
+password: "abc123",
 name: "GG",
 DOB: "11/11/2001",
 sex: "Male",
@@ -14,6 +16,7 @@ company_id: "BAB222"
 db.company.insert({
 comp_id: "BAB222",
 comp_name: "ABCD",
+email: "abc@abc.com",
 mgr_id: 0,
 address: "Sterling road, Chennai",
 phone: "9999999999",
