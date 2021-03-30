@@ -1,0 +1,57 @@
+use tender
+
+db.user.insert({
+mgr_id: 0,
+user_id: 0,
+name: "GG",
+DOB: "11/11/2001",
+sex: "Male",
+phone: "9999999999",
+aadhar_no: "1019283874",
+company_id: "BAB222"
+});
+
+db.company.insert({
+comp_id: "BAB222",
+comp_name: "ABCD",
+mgr_id: 0,
+address: "Sterling road, Chennai",
+phone: "9999999999",
+owner: "Saheb",
+current_projects_running: []
+});
+
+db.tender_form.insert({
+tender_id: "11111",
+comp_id: "BAB222",
+category: "Textile",
+description: "dsdsdssfg",
+contract_title: "Cotton sewing",
+reference: "44444",
+estimated_time: 50,
+agreement_value: 5000000,
+date_invited: "11/11/2020",
+date_due: "31/07/2021",
+conditions : "Some agreement jargons....",
+open_close: 1
+});
+
+db.company_set_tender.insert({
+tender_id: "11111",
+comp_id: "BAB222",
+category: "Textile",
+contract_title: "Cotton sewing",
+reference: "44444",
+estimated_time: 50,
+agreement_value: 5000000,
+date_invited: "11/11/2020",
+date_due: "31/07/2021",
+conditions : 1,
+open_close: 1
+});
+
+db.tender_alloted.insert({
+comp_id: "BAB222",
+tender_id: "11111",
+open_close: 1
+});
