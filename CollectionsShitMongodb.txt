@@ -4,13 +4,13 @@ PHP classbaseddddddddddddddddd
 MongoDB
 
 //1
-user collection{ //company manager/employeeeeeeeeeee
+user collection{ //company mgr_id/employeeeeeeeeeee
 user_id //default set
 name: String
 DOB: date
 sex: String
-phone number: String
-aadhar no: String
+phone: String
+aadhar_no: String
 company_id: String
 }
 
@@ -30,6 +30,7 @@ tender_form collection {
 tender_id //default set
 comp_id //reference from 2
 category: String //goods, toilet, food, cloth
+description: String,
 contract_Title: String
 reference: String
 estimated_time: int ( days)
@@ -45,7 +46,8 @@ company_set_tender collection {
 tender_id //default set
 comp_id //reference from 2
 category: String //goods, toilet, food, cloth
-contract_Title: String
+description: String
+contract_title: String
 reference: String
 estimated_time: int ( days)
 agreement_value: float
