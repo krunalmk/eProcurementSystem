@@ -8,6 +8,7 @@ password: "abc123",
 name: "GG",
 DOB: "11/11/2001",
 sex: "Male",
+role: "bidder",
 phone: "9999999999",
 aadhar_no: "1019283874",
 company_id: "BAB222"
