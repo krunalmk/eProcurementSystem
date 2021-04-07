@@ -11,6 +11,7 @@ email String
 name: String
 DOB: date
 sex: String
+role: String ( owner, bidder)
 phone: String
 aadhar_no: String
 company_id: String
