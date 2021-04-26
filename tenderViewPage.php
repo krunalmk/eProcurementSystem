@@ -12,24 +12,40 @@
     <script>
 
         function displayOpenTenders( responseInJSON){
+            var chosencategory = document.getElementsByName("chosencategory");
+            var chosencategoryValue = displayRadioValue( chosencategory);
             var txt = "";
-            txt += "<table border='1'>";
-            txt += "<tr><th>Tender ID</th><th>Reference</th><th>Posted company ID</th><th>Contract title</th><th>Date due</th><th>Date invited</th><th>Description</th><th>Conditions</th><th>Agreement value ( in rs.)</th></tr>";
+            txt += "<form id='applyfortender' name='applyfortender' method='POST' action='./apply_for_tender_api.php'><table border='1'>";
+            txt += "<tr><th>Tender ID</th><th>Reference</th><th>Posted company ID</th><th>Contract title</th><th>Date due</th><th>Date invited</th><th>Description</th><th>Conditions</th><th>Estimated time</th><th>Agreement value ( in rs.)</th><th>Apply now</th></tr>";
             for (x in responseInJSON) {
                 if( responseInJSON[x].open_close){
                     txt += "<tr><td>" + responseInJSON[x].tender_id + 
-                            "<td>" + responseInJSON[x].reference +
-                            "<td>" + responseInJSON[x].comp_id +
-                            "<td>" + responseInJSON[x].contract_title +
-                            "<td>" + responseInJSON[x].date_due +
-                            "<td>" + responseInJSON[x].date_invited +
-                            "<td>" + responseInJSON[x].description +
-                            "<td>" + responseInJSON[x].conditions +
-                            "<td>" + responseInJSON[x].agreement_value +
-                            "</td></tr>";
+                            "</td><td>" + responseInJSON[x].reference +
+                            "</td><td>" + responseInJSON[x].comp_id +
+                            "</td><td>" + responseInJSON[x].contract_title +
+                            "</td><td>" + responseInJSON[x].date_due +
+                            "</td><td>" + responseInJSON[x].date_invited +
+                            "</td><td>" + responseInJSON[x].description +
+                            "</td><td>" + responseInJSON[x].conditions +
+                            "</td><td>" + responseInJSON[x].estimated_time +
+                            "</td><td>" + responseInJSON[x].agreement_value +
+                            "</td><td>" +
+                            "<input name='whyiamspecial' id='whyiamspecial' placeholder='Why you must get this tender'>"+ "<input type = 'submit' value ='Apply'>" +
+                            "</td>";
                 }
             }
-            txt += "</table>";
+            txt += "<input type='hidden' id='tender_id' value='"+ responseInJSON[x].tender_id + "' name = 'tender_id' >";
+            txt += "<input type='hidden' id='company_id' value='"+ "<?=$_SESSION['company_id'];?>" + "' name = 'company_id' >";
+            txt += "<input type='hidden' id='chosencategory' value='"+ chosencategoryValue + "' name = 'chosencategory' >";
+            txt += "<input type='hidden' id='reference' value='"+ responseInJSON[x].reference + "' name = 'reference' >";
+            txt += "<input type='hidden' id='contracttitle' value='"+ responseInJSON[x].contract_title + "' name = 'contracttitle' >";
+            txt += "<input type='hidden' id='date_due' value='"+ responseInJSON[x].date_due + "' name = 'date_due' >";
+            txt += "<input type='hidden' id='date_invited' value='"+ responseInJSON[x].date_invited + "' name = 'date_invited' >";
+            txt += "<input type='hidden' id='description' value='"+ responseInJSON[x].description + "' name = 'description' >";
+            txt += "<input type='hidden' id='agreement_value' value ='"+ responseInJSON[x].agreement_value + "' name = 'agreement_value' >";
+            txt += "<input type='hidden' id='conditions' value='"+ responseInJSON[x].conditions + "' name = 'conditions' >";
+            txt += "<input type='hidden' id='estimated_time' value='"+ responseInJSON[x].estimated_time + "' name = 'estimated_time' >";
+            txt += "</table></form>";
             return txt;
         }
 
@@ -40,18 +56,18 @@
             for (x in responseInJSON) {
                 if( responseInJSON[x].open_close){
                     txt += "<tr><td>" + responseInJSON[x].tender_id + 
-                            "<td>" + responseInJSON[x].reference +
-                            "<td>" + responseInJSON[x].comp_id +
-                            "<td>" + responseInJSON[x].contract_title +
-                            "<td>" + responseInJSON[x].date_due +
-                            "<td>" + responseInJSON[x].date_invited +
-                            "<td>" + responseInJSON[x].description +
-                            "<td>" + responseInJSON[x].conditions +
-                            "<td>" + responseInJSON[x].agreement_value +
+                            "</td><td>" + responseInJSON[x].reference +
+                            "</td><td>" + responseInJSON[x].comp_id +
+                            "</td><td>" + responseInJSON[x].contract_title +
+                            "</td><td>" + responseInJSON[x].date_due +
+                            "</td><td>" + responseInJSON[x].date_invited +
+                            "</td><td>" + responseInJSON[x].description +
+                            "</td><td>" + responseInJSON[x].conditions +
+                            "</td><td>" + responseInJSON[x].agreement_value +
                             "</td></tr>";
                 }
             }
-            txt += "</table>";
+            txt += "</table></form>";
             return txt;
         }
 
@@ -77,7 +93,7 @@
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: "chosencategory="+chosencategoryValue
+                    body: "chosencategory="+chosencategoryValue 
                 });
                 
                 var response = await response.text();
@@ -102,6 +118,7 @@
         <input type = "radio" name="chosencategory" value = "Textile"> Textile
         <input type = "radio" name="chosencategory" value = "Logistics"> Logistics
         <input type = "radio" name="chosencategory" value = "Hospitality"> Hospitality
+        <input type = "radio" name="chosencategory" value = "Carpentry"> Carpentry
     </div>
     <button onclick="handleOnClick()"> SUBMIT BOI</button>
 
