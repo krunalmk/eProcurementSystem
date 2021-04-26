@@ -68,6 +68,5 @@
 
     $tenderFormSetObject = new TenderFormSet();
     $tenderFormSetObject->incrementTenderIDInDB();
-    $tenderFormSetObject->setFormValue( "BAB222", "Beverage","Yeast", "some description", "44444", 31, 1000000, "11/11/2000","31/07/2001", "jargons...", 1);
-    $tenderFormSetObject->setFormValue( $_SESSION["company_id"], $_POST["inputcategory"], $_POST["contracttitle"], $_POST["description"], $_POST["reference"], $_POST["estimatedtime"], $_POST["agreementvalue"], $_POST["dateinvited"], $_POST["datedue"], $_POST["conditions"], 1 );
+    $tenderFormSetObject->setFormValue( $_SESSION["company_id"], $_POST["chosencategory"], $_POST["contracttitle"], $_POST["description"], $_POST["reference"], $_POST["estimatedtime"], $_POST["agreementvalue"], $_POST["dateinvited"], $_POST["datedue"], $_POST["conditions"], 1 );
 ?>
