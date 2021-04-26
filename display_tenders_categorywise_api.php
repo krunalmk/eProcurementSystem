@@ -43,7 +43,7 @@
     }
 
     $inputCategory = $_POST["chosencategory"];
-    $signInObject = new SignIn("tender", "tender_form", $inputCategory);
+    $signInObject = new SignIn("tender", "company_set_tender", $inputCategory);
 
     $response = $signInObject->getDisplayInfo();
     echo $response;
