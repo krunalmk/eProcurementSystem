@@ -14,18 +14,19 @@
         function displayOpenTenders( responseInJSON){
             var txt = "";
             txt += "<table border='1'>";
-            txt += "<tr><th>Tender ID</th><th>Reference</th><th>Posted company ID</th><th>Contract title</th><th>Date due</th><th>Date invited</th><th>Description</th><th>Conditions</th><th>Agreement value ( in rs.)</th></tr>";
+            txt += "<tr><th>Tender ID</th><th>Reference</th><th>Posted company ID</th><th>Contract title</th><th>Date due</th><th>Date invited</th><th>Description</th><th>Conditions</th><th>Agreement value ( in rs.)</th><th>Why I must get this contract</th></tr>";
             for (x in responseInJSON) {
                 if( responseInJSON[x].open_close){
                     txt += "<tr><td>" + responseInJSON[x].tender_id + 
-                            "<td>" + responseInJSON[x].reference +
-                            "<td>" + responseInJSON[x].comp_id +
-                            "<td>" + responseInJSON[x].contract_title +
-                            "<td>" + responseInJSON[x].date_due +
-                            "<td>" + responseInJSON[x].date_invited +
-                            "<td>" + responseInJSON[x].description +
-                            "<td>" + responseInJSON[x].conditions +
-                            "<td>" + responseInJSON[x].agreement_value +
+                            "</td><td>" + responseInJSON[x].reference +
+                            "</td><td>" + responseInJSON[x].comp_id +
+                            "</td><td>" + responseInJSON[x].contract_title +
+                            "</td><td>" + responseInJSON[x].date_due +
+                            "</td><td>" + responseInJSON[x].date_invited +
+                            "</td><td>" + responseInJSON[x].description +
+                            "</td><td>" + responseInJSON[x].conditions +
+                            "</td><td>" + responseInJSON[x].agreement_value +
+                            "</td><td>" + responseInJSON[x].whyiamspecial +
                             "</td></tr>";
                 }
             }
@@ -49,7 +50,7 @@
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: null
+                body: "company_id="+ "<?=$_SESSION['company_id'];?>"
             });
             
             var response = await response.text();
