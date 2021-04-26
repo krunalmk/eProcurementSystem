@@ -24,8 +24,8 @@
         }
 
         public function getInfoArray(){
-            $filter = ['company_id' => $this->company_id];
-            $option = [ 'projection' => [ 'tender_id'=> 1, 'comp_id'=> 1, 'category'=> 1, 'description'=> 1, 'contract_title'=> 1, 'reference'=> 1, 'estimated_time'=> 1, 'agreement_value'=> 1, 'date_invited'=> 1, 'date_due'=> 1, 'conditions'=> 1, 'open_close'=> 1]];
+            $filter = ['comp_id' => $this->company_id];
+            $option = [ 'projection' => [ 'tender_id'=> 1, 'comp_id'=> 1, 'category'=> 1, 'description'=> 1, 'contract_title'=> 1, 'reference'=> 1, 'estimated_time'=> 1, 'agreement_value'=> 1, 'date_invited'=> 1, 'date_due'=> 1, 'conditions'=> 1, 'open_close'=> 1, 'whyiamspecial'=> 1]];
             $read = new MongoDB\Driver\Query($filter, $option);
 
             //fetch records
