@@ -12,6 +12,7 @@
         public $datedue;
         public $conditions;
         public $openclose;
+        public $whyiamspecial;
 
         public function setGeneralValues($tenderid, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose){
             $this->tenderid = $tenderid;
@@ -28,8 +29,28 @@
             $this->openclose = $openclose;
         }
 
+        public function setGeneralValuesForTenderApply($tenderid, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial){
+                $this->tenderid = $tenderid;
+                $this->compid = $compid;
+                $this->category = $category;
+                $this->description = $description;
+                $this->contracttitle = $contracttitle;
+                $this->reference = $reference;
+                $this->estimatedtime = $estimatedtime;
+                $this->agreementvalue = $agreementvalue;
+                $this->dateinvited = $dateinvited;
+                $this->datedue = $datedue;
+                $this->conditions = $conditions;
+                $this->openclose = $openclose;
+                $this->whyiamspecial = $whyiamspecial;
+        }
+
         public function formatDataForInsertionInDB(){
                 return [ "tender_id"=> $this->tenderid, "comp_id"=> $this->compid, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose ];
+        }
+
+        public function formatTenderApplyDataForInsertionInDB(){
+                return [ "tender_id"=> $this->tenderid, "comp_id"=> $this->compid, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose, "whyiamspecial"=>$this->whyiamspecial ];
         }
 
 
