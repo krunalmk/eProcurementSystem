@@ -26,8 +26,8 @@
         }
 
         public function getInfoArray(){
-            $filter = ['email' => $this->email];
-            $option = [ 'projection' => ['name'=> 1, 'password'=> 1, 'mgr_id'=> 1, 'company_id'=> 1]];
+            $filter = ['email' => $this->email, 'password'=> $this->inputPassword];
+            $option = [ 'projection' => ['name'=> 1, 'password'=> 1, 'mgr_id'=> 1, 'company_id'=> 1, 'active'=> 1]];
             $read = new MongoDB\Driver\Query($filter, $option);
 
             //fetch records
@@ -73,12 +73,19 @@
     
     $response->success = $signInObject->matchPassword();
     if ($response->success) {
-        $response->body = $signInData;
+            $response->body = $signInData;
     }
     $_SESSION["oid"] = $response->body->oid;
+    $_SESSION["email"] = $email;
     $_SESSION["mgr_id"] = $response->body->mgr_id;
     $_SESSION["name"] = $response->body->name;
+    $_SESSION["password"] = $passwordFromDB;
     $_SESSION["company_id"] = $response->body->company_id;
-    echo json_encode($response);
-    
+
+    if(strcmp($response->body->active,'1') != 0){
+        echo "{\"success\":false}";
+    }
+    else{
+        echo json_encode($response);
+    }
 ?>
