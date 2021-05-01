@@ -2,6 +2,7 @@
     class GeneralTenderForm {
         public $tenderid;
         public $compid;
+        public $compid_owner;
         public $category;
         public $description;
         public $contracttitle;
@@ -13,6 +14,8 @@
         public $conditions;
         public $openclose;
         public $whyiamspecial;
+        public $tendersetter;
+        public $comp_estimate;
 
         public function setGeneralValues($tenderid, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose){
             $this->tenderid = $tenderid;
@@ -29,7 +32,7 @@
             $this->openclose = $openclose;
         }
 
-        public function setGeneralValuesForTenderApply($tenderid, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial){
+        public function setGeneralValuesToUploadNewTender($tenderid, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose){
                 $this->tenderid = $tenderid;
                 $this->compid = $compid;
                 $this->category = $category;
@@ -42,15 +45,36 @@
                 $this->datedue = $datedue;
                 $this->conditions = $conditions;
                 $this->openclose = $openclose;
+            }
+
+        public function setGeneralValuesForTenderApply($tenderid, $compid, $compid_owner, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial, $comp_estimate){
+                $this->tenderid = $tenderid;
+                $this->compid = $compid;
+                $this->compid_owner = $compid_owner;
+                $this->category = $category;
+                $this->description = $description;
+                $this->contracttitle = $contracttitle;
+                $this->reference = $reference;
+                $this->estimatedtime = $estimatedtime;
+                $this->agreementvalue = $agreementvalue;
+                $this->dateinvited = $dateinvited;
+                $this->datedue = $datedue;
+                $this->conditions = $conditions;
+                $this->openclose = $openclose;
                 $this->whyiamspecial = $whyiamspecial;
+                $this->comp_estimate = $comp_estimate;
         }
 
         public function formatDataForInsertionInDB(){
                 return [ "tender_id"=> $this->tenderid, "comp_id"=> $this->compid, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose ];
         }
 
+        public function formatDataForTenderFormUploadInsertionInDB(){
+                return [ "tender_id"=> $this->tenderid, "comp_id_owner"=> $this->compid, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose ];
+        }
+
         public function formatTenderApplyDataForInsertionInDB(){
-                return [ "tender_id"=> $this->tenderid, "comp_id"=> $this->compid, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose, "whyiamspecial"=>$this->whyiamspecial ];
+                return [ "tender_id"=> $this->tenderid, "comp_id_bidder"=> $this->compid, "comp_id_owner"=> $this->compid_owner, "category"=> $this->category, "contracttitle"=> $this->contracttitle, "description"=> $this->description, "reference"=> $this->reference, "estimated_time"=> $this->estimatedtime, "agreement_value"=> $this->agreementvalue, "date_invited"=> $this->dateinvited, "date_due"=>$this->datedue, "conditions"=>$this->conditions, "open_close"=> $this->openclose, "whyiamspecial"=>$this->whyiamspecial, "comp_estimate" =>$this->comp_estimate ];
         }
 
 
