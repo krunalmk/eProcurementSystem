@@ -39,8 +39,8 @@
                 return true;
         }
 
-        public function setFormValue( $tender_id, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial){
-            $this->setGeneralValuesForTenderApply( $tender_id, $compid, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial);
+        public function setFormValue( $tender_id, $compid, $compid_owner, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial, $comp_estimate){
+            $this->setGeneralValuesForTenderApply( $tender_id, $compid, $compid_owner, $category, $contracttitle, $description, $reference, $estimatedtime, $agreementvalue, $dateinvited, $datedue, $conditions, $openclose, $whyiamspecial, $comp_estimate);
             $updateInfoInProperFormat = $this->formatTenderApplyDataForInsertionInDB();
             
             $bulk = new MongoDB\Driver\BulkWrite();
@@ -61,7 +61,7 @@
         header('location:tenderViewPage.php?applied=2');
     }
     else{
-    $applyTenderObject->setFormValue( $_POST['tender_id'], $_SESSION["company_id"], $_POST["chosencategory"], $_POST["contracttitle"], $_POST["description"], $_POST["reference"], $_POST["estimated_time"], $_POST["agreement_value"], $_POST["date_invited"], $_POST["date_due"], $_POST["conditions"], 1, $_POST["whyiamspecial"] );
+    $applyTenderObject->setFormValue( $_POST['tender_id'], $_SESSION["company_id"], $_POST['comp_id_owner'], $_POST["chosencategory"], $_POST["contracttitle"], $_POST["description"], $_POST["reference"], $_POST["estimated_time"], $_POST["agreement_value"], $_POST["date_invited"], $_POST["date_due"], $_POST["conditions"], 1, $_POST["whyiamspecial"], $_POST["comp_estimate"] );
     header('location:tenderViewPage.php?applied=1');
     }
 
