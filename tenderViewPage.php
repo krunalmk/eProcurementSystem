@@ -305,7 +305,7 @@ marquee { width:80% }
   <a href="applicationStatusCheckPage.php">Application Status</a>
   <a href="profile.php">Profile</a>
   <a href="mod4.php">Set Tender Status</a>
-  <a href="form.php">Logout</a>
+  <a href="logout.php">Logout</a>
   </center>
 </div><br><br>
 <div class="header">
